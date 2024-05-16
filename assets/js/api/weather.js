@@ -1,4 +1,5 @@
 import { createCard } from "./../components/createCard.js";
+import { getPictureCity } from "./getPictureCity.js";
 
 createCard
 const weatherData = async (city) => {
@@ -39,6 +40,7 @@ const weatherData = async (city) => {
                 createCard(datas, 0, 7);
                 createCard(datas, 6, 15);
                 createCard(datas, 14, 23);
+                createCard(datas, 22, 31);
                 createCard(datas, 30, 39);
               break;
             case 15:
@@ -59,11 +61,16 @@ const weatherData = async (city) => {
               break;
             case 21:
               console.log("Il est 21 heures.");
+              createCard(datas,0, 4);
+                createCard(datas,3, 12);
+                createCard(datas,11, 20);
+                createCard(datas,19, 28);
+                createCard(datas,27, 36);
               break;
             default:
               console.log("L'heure n'est pas dans la liste spécifiée.");
           }
-
+          getPictureCity(city);
         
         return datas;
     } catch (error) {

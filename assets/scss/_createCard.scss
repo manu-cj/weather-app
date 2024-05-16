@@ -14,44 +14,66 @@
         height: 500px;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        justify-content: flex-start;
         overflow: hidden;
         border: 5px rgb(37, 124, 123) solid;
         scroll-snap-type: y mandatory;
-        border-radius: 15px;
+        border-radius: 5px;
+        background-blend-mode: darken;
 
-        h2 {
+        .h2_title_card {
+            display: block;
+            width: 100%;
             padding: 0;
             margin: 0;
+            background: rgba(71, 237, 255, 0.708);
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            backdrop-filter: blur( 4px );
+            -webkit-backdrop-filter: blur( 1px );
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+            text-align: center;
         }
+
         .day_data {
             width: 500px;
             background-color: rgb(71, 255, 215);
-            border-radius: 15px;
+            border-radius: 5px;
         }
 
         .hour_div {
-            border-radius: 15px;
+            height: 50%;
             display: flex;
             flex-direction: row;
             justify-content: space-around;
             gap: 10px;
             overflow-x: scroll;
 
+            background: rgba( 255, 255, 255, 0.3 );
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            backdrop-filter: blur( 4px );
+            -webkit-backdrop-filter: blur( 1px );
+            
+
             .hour_data {
                 min-width: 100px;
                 min-height: 150px;
                 border-radius: 5px;
                 margin: 15px;
-                background-color: rgb(71, 237, 255);
+                background-color: rgba(71, 237, 255, 0.601);
+                box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+                backdrop-filter: blur( 4px );
+                -webkit-backdrop-filter: blur( 1px );
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
                 text-align: center;
                 padding: 5px;
-            
-                :where(h5,h2,h3,h4) {
+
+                :where(h5, h2, h3, h4) {
                     padding: 0;
                     margin: 5px;
                 }
-                
+
                 img {
                     width: 50px;
                 }
@@ -60,19 +82,27 @@
 
         .actualy_weather_div {
             width: 100%;
-            height: 230px;
-            background-color: rgba(127, 255, 212, 0.14);
+            height: 50%;
             display: flex;
             flex-direction: row;
             justify-content: space-around;
             gap: 10px;
+            background-color: rgba(127, 255, 212, 0.351);
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            backdrop-filter: blur( 4px );
+            -webkit-backdrop-filter: blur( 4px );
+            border-bottom-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            border: 1px solid rgba( 255, 255, 255, 0.18 );
+            color: white;
+            padding: 10px;
 
 
             .subTitle {
-                background-color: rgba(0, 255, 255, 0.416);
+                background-color: rgba(71, 237, 255, 0.708);
                 display: block;
-                width: 100px;
-                border-radius: 10px;
+                width: 80px;
+                border-radius: 5px;
                 text-align: center;
             }
 
@@ -84,10 +114,14 @@
                 justify-content: space-between;
                 align-items: center;
                 font-size: x-small;
+
                 h2 {
                     margin-top: 10px;
+                    font-size: 25px;
+                    color: whitesmoke;
                 }
-                :where(h5,h3) {
+
+                :where(h5, h3) {
                     padding: 0;
                     margin: 0;
                 }
@@ -96,6 +130,7 @@
                     color: rgba(93, 157, 183, 0.814);
                 }
             }
+
             .humidity_and_wind_div {
                 width: 30%;
                 height: 100%;
@@ -105,7 +140,8 @@
                 align-items: center;
                 font-size: x-small;
                 padding: 0;
-                :where(h5,h3) {
+
+                :where(h5, h3) {
                     padding: 0;
                     margin: 0;
                 }
@@ -115,6 +151,7 @@
                     color: orange;
                 }
             }
+
             .precipitation_and_visibility {
                 width: 30%;
                 height: 100%;
@@ -124,7 +161,8 @@
                 align-items: center;
                 font-size: x-small !important;
                 padding: 0;
-                :where(h5,h3) {
+
+                :where(h5, h3) {
                     padding: 0;
                     margin: 0;
                 }

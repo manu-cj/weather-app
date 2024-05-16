@@ -88,7 +88,7 @@ const createCard = async (datas, start, end) => {
 
     let datas_div = document.createElement('article');
     let hour_div = document.createElement('div');
-    let h2 = document.createElement('h1');
+    let h2_title_card = document.createElement('h2');
     let actualy_weather_div = document.createElement('div');
     let weather_and_temp_div = document.createElement('div');
     let humidity_and_wind_div = document.createElement('div');
@@ -96,15 +96,14 @@ const createCard = async (datas, start, end) => {
    
     datas_div.classList.add('datas_div');
     hour_div.classList.add('hour_div');
-    h2.classList.add('day-name-data');
+    h2_title_card.classList.add('h2_title_card');
     actualy_weather_div.classList.add('actualy_weather_div');
     weather_and_temp_div.classList.add('weather_and_temp_div');
     humidity_and_wind_div.classList.add('humidity_and_wind_div');
     precipitation_and_visibility.classList.add('precipitation_and_visibility');
 
 
-    h2.textContent = dayName;
-    h2.style.marginLeft = '30px';
+    h2_title_card.textContent = dayName;
     let data = datas.list[start];
     weather_and_temp_div.innerHTML = 
     `<h2 class="actualy_weather_data">${Math.round(data.main.temp)} ° C</h2>
@@ -132,7 +131,7 @@ const createCard = async (datas, start, end) => {
    
     
     section_weather.appendChild(datas_div);
-    datas_div.appendChild(h2);
+    datas_div.appendChild(h2_title_card);
     datas_div.appendChild(hour_div);
     datas_div.appendChild(actualy_weather_div);
     actualy_weather_div.appendChild(weather_and_temp_div);

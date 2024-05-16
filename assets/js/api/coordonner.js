@@ -1,4 +1,4 @@
-let request = "http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=12e14c46b7b7aec01efc9c6d10f8e568";
+
 
 let getCoordoner = async (city) => {
     try {
