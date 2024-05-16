@@ -1,0 +1,18 @@
+.section_weather {
+  width: 100%;
+  height: 600px;
+  border: 1px red solid;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+}
+.section_weather .datas_div {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+}
+.section_weather .datas_div .time_data {
+  width: 100%;
+  background-color: tomato;
+}/*# sourceMappingURL=createCard.css.map */
