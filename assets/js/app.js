@@ -14,10 +14,15 @@ inputsubmit.addEventListener('click', () => {
         let choiceDiv = document.querySelector('.choice');
         let city = choiceDiv.children[0].textContent.toLocaleLowerCase()
         main.innerHTML = "";
-        let section_weather = document.createElement('section');
-        section_weather.classList.add('section_weather');
+        
         main.appendChild(section_weather);
         section_weather.innerHTML = "";
         weatherData(city);
     }
 })
+
+let section_weather = document.createElement('section');
+section_weather.classList.add('section_weather');
+main.appendChild(section_weather);
+
+weatherData('bruxelles, BE');

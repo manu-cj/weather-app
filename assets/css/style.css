@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -8,29 +9,51 @@ main {
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  background-image: repeating-linear-gradient(90deg, hsla(298, 16%, 68%, 0.06) 0px, hsla(298, 16%, 68%, 0.06) 1px, transparent 1px, transparent 21px, hsla(298, 16%, 68%, 0.06) 21px, hsla(298, 16%, 68%, 0.06) 22px, transparent 22px, transparent 72px), repeating-linear-gradient(0deg, hsla(298, 16%, 68%, 0.06) 0px, hsla(298, 16%, 68%, 0.06) 1px, transparent 1px, transparent 21px, hsla(298, 16%, 68%, 0.06) 21px, hsla(298, 16%, 68%, 0.06) 22px, transparent 22px, transparent 72px), repeating-linear-gradient(135deg, hsla(298, 16%, 68%, 0.06) 0px, hsla(298, 16%, 68%, 0.06) 1px, transparent 1px, transparent 21px, hsla(298, 16%, 68%, 0.06) 21px, hsla(298, 16%, 68%, 0.06) 22px, transparent 22px, transparent 72px), linear-gradient(90deg, hsl(275, 3%, 97%), hsl(275, 3%, 97%));
 }
 main .section_weather {
+  max-width: 75%;
   min-width: 320px;
-  height: 550px;
-  border: 1px red solid;
+  height: 100vh;
+  background-color: rgba(130, 186, 202, 0.1254901961);
+  border-radius: 5px;
   display: flex;
   flex-direction: row;
-  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
   overflow: hidden;
-  overflow-x: scroll;
-  margin: 15px;
+}
+main .section_weather :where(.fa-angle-right, .fa-angle-left) {
+  cursor: pointer;
+  color: #0092ac;
+  font-size: 45px;
+}
+main .section_weather :where(.previous_card, .next_card) {
+  width: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+main .section_weather :where(.previous_card, .next_card) i {
+  font-size: 35px;
 }
 main .section_weather .datas_div {
-  min-width: 320px;
-  height: 500px;
+  min-width: 260px;
+  max-width: 90%;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   overflow: hidden;
-  border: 5px rgb(37, 124, 123) solid;
+  border: 4px rgba(88, 179, 177, 0.622) solid;
   scroll-snap-type: y mandatory;
   border-radius: 5px;
   background-blend-mode: darken;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 main .section_weather .datas_div .h2_title_card {
   display: block;
@@ -51,7 +74,7 @@ main .section_weather .datas_div .day_data {
   border-radius: 5px;
 }
 main .section_weather .datas_div .hour_div {
-  height: 50%;
+  height: 30%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -62,9 +85,24 @@ main .section_weather .datas_div .hour_div {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(1px);
 }
+main .section_weather .datas_div .hour_div::-webkit-scrollbar {
+  width: 3px; /* Largeur de la scrollbar */
+  height: 3px;
+}
+main .section_weather .datas_div .hour_div::-webkit-scrollbar-track {
+  background: #06b7ae; /* Couleur de la piste de la scrollbar */
+}
+main .section_weather .datas_div .hour_div::-webkit-scrollbar-thumb {
+  width: 15%;
+  background-color: #0092ac; /* Couleur de la barre de défilement */
+  border-radius: 10px; /* Coins arrondis de la barre de défilement */
+}
+main .section_weather .datas_div .hour_div::-webkit-scrollbar-thumb:hover {
+  background: #0adbdb; /* Couleur de la barre de défilement au survol */
+}
 main .section_weather .datas_div .hour_div .hour_data {
-  min-width: 100px;
-  min-height: 150px;
+  min-width: 130px;
+  min-height: 130px;
   border-radius: 5px;
   margin: 15px;
   background-color: rgba(71, 237, 255, 0.601);
@@ -75,6 +113,7 @@ main .section_weather .datas_div .hour_div .hour_data {
   border-top-right-radius: 5px;
   text-align: center;
   padding: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 main .section_weather .datas_div .hour_div .hour_data :where(h5, h2, h3, h4) {
   padding: 0;
@@ -83,9 +122,13 @@ main .section_weather .datas_div .hour_div .hour_data :where(h5, h2, h3, h4) {
 main .section_weather .datas_div .hour_div .hour_data img {
   width: 50px;
 }
+main .section_weather .datas_div .hour_div .hour_data i {
+  margin-left: 2px;
+  color: orange;
+}
 main .section_weather .datas_div .actualy_weather_div {
   width: 100%;
-  height: 50%;
+  height: 66%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -101,24 +144,54 @@ main .section_weather .datas_div .actualy_weather_div {
   padding: 10px;
 }
 main .section_weather .datas_div .actualy_weather_div .subTitle {
-  background-color: rgba(71, 237, 255, 0.708);
+  background-color: rgba(255, 129, 71, 0.853);
   display: block;
-  width: 80px;
+  width: 95%;
   border-radius: 5px;
   text-align: center;
 }
 main .section_weather .datas_div .actualy_weather_div .weather_and_temp_div {
-  width: 30%;
+  width: 25%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  font-size: x-small;
+  font-size: large;
+}
+main .section_weather .datas_div .actualy_weather_div .weather_and_temp_div .temp_div {
+  width: 100%;
+  height: 40%;
+  border-radius: 5px;
+  background-color: rgba(203, 102, 1, 0.6980392157);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+main .section_weather .datas_div .actualy_weather_div .weather_and_temp_div .temp_div h3 {
+  margin-bottom: 30px;
+  margin-top: 5px;
+}
+main .section_weather .datas_div .actualy_weather_div .weather_and_temp_div .weather_div {
+  width: 100%;
+  height: 40%;
+  border-radius: 5px;
+  background-color: rgba(46, 139, 196, 0.648);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+main .section_weather .datas_div .actualy_weather_div .weather_and_temp_div .weather_div h3 {
+  margin-bottom: 30px;
+  margin-top: 5px;
 }
 main .section_weather .datas_div .actualy_weather_div .weather_and_temp_div h2 {
   margin-top: 10px;
-  font-size: 25px;
+  font-size: 35px;
   color: whitesmoke;
 }
 main .section_weather .datas_div .actualy_weather_div .weather_and_temp_div :where(h5, h3) {
@@ -135,8 +208,39 @@ main .section_weather .datas_div .actualy_weather_div .humidity_and_wind_div {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  font-size: x-small;
+  font-size: medium;
   padding: 0;
+}
+main .section_weather .datas_div .actualy_weather_div .humidity_and_wind_div .humidity_div {
+  width: 100%;
+  height: 40%;
+  border-radius: 5px;
+  background-color: rgba(71, 129, 255, 0.73);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+main .section_weather .datas_div .actualy_weather_div .humidity_and_wind_div .humidity_div h3 {
+  margin-bottom: 30px;
+  margin-top: 5px;
+  margin-top: 5px;
+}
+main .section_weather .datas_div .actualy_weather_div .humidity_and_wind_div .wind_div {
+  width: 100%;
+  height: 40%;
+  border-radius: 5px;
+  background-color: rgba(5, 154, 134, 0.774);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+main .section_weather .datas_div .actualy_weather_div .humidity_and_wind_div .wind_div h3 {
+  margin-bottom: 30px;
+  margin-top: 5px;
 }
 main .section_weather .datas_div .actualy_weather_div .humidity_and_wind_div :where(h5, h3) {
   padding: 0;
@@ -144,7 +248,7 @@ main .section_weather .datas_div .actualy_weather_div .humidity_and_wind_div :wh
 }
 main .section_weather .datas_div .actualy_weather_div .humidity_and_wind_div i {
   margin-left: 15px;
-  color: orange;
+  color: tomato;
 }
 main .section_weather .datas_div .actualy_weather_div .precipitation_and_visibility {
   width: 30%;
@@ -153,10 +257,56 @@ main .section_weather .datas_div .actualy_weather_div .precipitation_and_visibil
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  font-size: x-small !important;
+  font-size: medium;
   padding: 0;
+}
+main .section_weather .datas_div .actualy_weather_div .precipitation_and_visibility .precipitation_div {
+  width: 100%;
+  height: 40%;
+  border-radius: 5px;
+  background-color: rgba(0, 166, 208, 0.733);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+main .section_weather .datas_div .actualy_weather_div .precipitation_and_visibility .precipitation_div h3 {
+  margin-bottom: 30px;
+  margin-top: 5px;
+  margin-top: 5px;
+}
+main .section_weather .datas_div .actualy_weather_div .precipitation_and_visibility .visibility_div {
+  width: 100%;
+  height: 40%;
+  border-radius: 5px;
+  background-color: rgba(175, 175, 1, 0.611);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+main .section_weather .datas_div .actualy_weather_div .precipitation_and_visibility .visibility_div h3 {
+  margin-bottom: 30px;
+  margin-top: 5px;
+  margin-top: 5px;
 }
 main .section_weather .datas_div .actualy_weather_div .precipitation_and_visibility :where(h5, h3) {
   padding: 0;
   margin: 0;
+}
+main .section_weather .datas_div .actualy_weather_div .precipitation_and_visibility i {
+  margin-left: 15px;
+  color: orange;
+}
+main .section_weather .slider_card_select {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+main .section_weather .slider_card_select i {
+  background-color: white;
 }/*# sourceMappingURL=style.css.map */

@@ -42,7 +42,7 @@ let getPictureCity = async (city) => {
         datas_div.forEach(data_div => {
             if (datas.results.length > 0) {
                 let rand = Math.floor(Math.random() * datas.results.length)
-                data_div.style.backgroundImage = `url(${datas.results[rand].urls.small_s3})`;
+                data_div.style.backgroundImage = `url(${datas.results[rand].urls.thumb})`;
                 data_div.style.backgroundSize = 'cover';
             }
             if (datas.results.length === 0) {

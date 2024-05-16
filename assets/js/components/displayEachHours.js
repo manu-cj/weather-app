@@ -91,12 +91,12 @@ const displayForEachHours = (hour_div, dateString, datas, start, end) => {
 
             precipitation_data.innerHTML = 
             `
-            <h5>${data.rain['3h']} mm <i class="fas fa-umbrella" style="color: #2a2d55;"></i></h5>
+            <h5>${data.rain['3h']} mm <i class="fas fa-umbrella"></i></h5>
             `;
         } else {
             precipitation_data.innerHTML = 
             `
-            <h5>0 mm <i class="fas fa-umbrella" style="color: #2a2d55;"></i></h5>
+            <h5>0 mm <i class="fas fa-umbrella"></i></h5>
             `;
         }
 
