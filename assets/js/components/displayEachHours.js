@@ -5,6 +5,7 @@ const displayForEachHours = (hour_div, dateString, datas, start, end) => {
         let dates = new Date(`${data.dt_txt}`)
         const heure = dates.getHours();
         console.log(data);
+        
         function isWinter(nightIcon, dayIcon) {
             const currentMonth = new Date(dateString).getMonth();
             console.log(currentMonth);
@@ -75,6 +76,7 @@ const displayForEachHours = (hour_div, dateString, datas, start, end) => {
         
 
         hour_data.classList.add('hour_data');
+        hour_data.id = i;
         
         hour_div.appendChild(hour_data);
         

@@ -1,8 +1,10 @@
 
 import { displayForEachHours } from "./displayEachHours.js";
 
+
 const createCard = async (datas, start, end) => {
 
+    //date au format 17/03/24 03:00
     let dateString = datas.list[start].dt_txt;
     console.log(dateString);
     const dateObject = new Date(dateString);
@@ -14,10 +16,12 @@ const createCard = async (datas, start, end) => {
     const dayIndex = dateObject.getDay();
     
     // Getting the day name from the index
+    // dayName est donc égal à thusday, monday, etc
     const dayName = daysOfWeek[dayIndex];
 
     const section_weather = document.querySelector('.section_weather');
-
+    section_weather.id = start;
+    let index = section_weather.id;
 
     let dates = new Date(`${datas.list[start].dt_txt}`)
         const heure = dates.getHours();
@@ -84,8 +88,8 @@ const createCard = async (datas, start, end) => {
                 break;
         }
 
-
-
+    
+    
     let datas_div = document.querySelector('.datas_div');
     let hour_div = document.createElement('div');
     let h2_title_card = document.createElement('h2');
@@ -118,7 +122,7 @@ const createCard = async (datas, start, end) => {
 
 
     h2_title_card.textContent = dayName;
-    let data = datas.list[start];
+    let data = datas.list[index];
     weather_div.innerHTML = `<h3 class="actualy_weather_data">${iconWeather}</h3>`;
     temp_div.innerHTML = `<h2 class="actualy_weather_data">${Math.round(data.main.temp)} ° C</h2>`;
     
@@ -139,7 +143,8 @@ const createCard = async (datas, start, end) => {
         <h3>${data.visibility} m <i class="fas fa-smog" style="color: #f2f2f2;"></i></h3>`;
     }
 
-    
+   
+
     datas_div.appendChild(h2_title_card);
     datas_div.appendChild(hour_div);
     datas_div.appendChild(actualy_weather_div);
@@ -155,7 +160,23 @@ const createCard = async (datas, start, end) => {
 
 
 
+    
+    
+
+
     displayForEachHours(hour_div, dateString, datas, start, end);
+    
+    function change_hours() {
+        let divs_hours = document.querySelectorAll('.hour_data');
+    divs_hours.forEach(div_hour => {
+        div_hour.addEventListener('click', () => {
+            console.log(index);
+            section_weather.id = div_hour.id;
+            console.log(div_hour.id);
+        })
+    });
+    }
+    change_hours();
     
 }
 

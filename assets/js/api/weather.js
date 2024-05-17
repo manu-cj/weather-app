@@ -1,5 +1,6 @@
 import { createCard } from "./../components/createCard.js";
 import { getPictureCity } from "./getPictureCity.js";
+import { createGraph } from "./../components/createGraph.js";
 
 createCard;
 const weatherData = async (city) => {
@@ -19,7 +20,12 @@ const weatherData = async (city) => {
     const section_weather = document.querySelector(".section_weather");
     let datas_div = document.createElement("article");
 
+    
+
+    
     datas_div.classList.add("datas_div");
+
+    
 
     let day = 1;
     function select_day(day1, day2, day3, day4, day5) {
@@ -41,6 +47,7 @@ const weatherData = async (city) => {
     }
 
     function getHourForCreateCard() {
+
       section_weather.insertBefore(
         datas_div,
         section_weather.firstChild.nextSibling
@@ -104,6 +111,7 @@ const weatherData = async (city) => {
           console.log("Il est 9 heures.");
           if (day === 1) {
             createCard(datas, 0, 8);
+            createGraph(datas, 0, 8);
           }
           if (day === 2) {
             createCard(datas, 7, 16);
@@ -213,11 +221,13 @@ const weatherData = async (city) => {
           <i class="fas fa-circle" id="4" style="background-color: white; color: white; border: 2px #0092ac solid; border-radius: 100%;"></i>
           <i class="fas fa-circle" id="5" style="background-color: white; color: white; border: 2px #0092ac solid; border-radius: 100%;"></i>
           `;
+          
 
     section_weather.appendChild(previous_card);
     getHourForCreateCard();
     section_weather.appendChild(next_card);
     section_weather.appendChild(slider_card_select);
+    
 
     let fa_circle = document.querySelectorAll(".fa-circle");
     function verifDay() {
@@ -254,6 +264,8 @@ const weatherData = async (city) => {
 
     verifDay();
 
+    
+
     const icon_next = next_card.querySelector("i");
     const icon_previous = previous_card.querySelector("i");
 
@@ -262,6 +274,7 @@ const weatherData = async (city) => {
         day += 1;
         console.log(day);
         getHourForCreateCard();
+        changeGraph();
         if (day > 4) {
           icon_next.style.display = "none";
         }
@@ -281,6 +294,7 @@ const weatherData = async (city) => {
         day -= 1;
         console.log(day);
         getHourForCreateCard();
+        changeGraph();
         if (day < 2) {
           icon_previous.style.display = "none";
         }
@@ -293,6 +307,159 @@ const weatherData = async (city) => {
       icon_previous.style.display = "none";
     }
 
+    function changeGraph() {
+      switch (heure) {
+        case 0:
+          console.log("Il est minuit.");
+          if (day === 1) {
+            createGraph(datas, 0, 3);
+          }
+          if (day === 2) {
+            createGraph(datas, 2, 11);
+          }
+          if (day === 3) {
+            createGraph(datas, 10, 19);
+          }
+          if (day === 4) {
+            createGraph(datas, 18, 27);
+          }
+          if (day === 5) {
+            createGraph(datas, 26, 35);
+          }
+          break;
+        case 3:
+          console.log("Il est 3 heures.");
+          if (day === 1) {
+            createGraph(datas, 0, 2);
+          }
+          if (day === 2) {
+            createGraph(datas, 1, 10);
+          }
+          if (day === 3) {
+            createGraph(datas, 9, 18);
+          }
+          if (day === 4) {
+            createGraph(datas, 17, 26);
+          }
+          if (day === 5) {
+            createGraph(datas, 25, 34);
+          }
+          break;
+        case 6:
+          if (day === 1) {
+            createGraph(datas, 0, 9);
+          }
+          if (day === 2) {
+            createGraph(datas, 8, 17);
+          }
+          if (day === 3) {
+            createGraph(datas, 16, 25);
+          }
+          if (day === 4) {
+            createGraph(datas, 24, 33);
+          }
+          if (day === 5) {
+            createGraph(datas, 32, 40);
+          }
+          break;
+        case 9:
+          console.log("Il est 9 heures.");
+          if (day === 1) {
+            createGraph(datas, 0, 8);
+            createGraph(datas, 0, 8);
+          }
+          if (day === 2) {
+            createGraph(datas, 7, 16);
+          }
+          if (day === 3) {
+            createGraph(datas, 15, 24);
+          }
+          if (day === 4) {
+            createGraph(datas, 23, 32);
+          }
+          if (day === 5) {
+            createGraph(datas, 31, 40);
+          }
+          break;
+        case 12:
+          console.log("Il est midi.");
+          if (day === 1) {
+            createGraph(datas, 0, 7);
+          }
+          if (day === 2) {
+            createGraph(datas, 6, 15);
+          }
+          if (day === 3) {
+            createGraph(datas, 14, 23);
+          }
+          if (day === 4) {
+            createGraph(datas, 22, 31);
+          }
+          if (day === 5) {
+            createGraph(datas, 30, 39);
+          }
+          break;
+        case 15:
+          console.log("Il est 15 heures.");
+          if (day === 1) {
+            createGraph(datas, 0, 6);
+          }
+          if (day === 2) {
+            createGraph(datas, 5, 14);
+          }
+          if (day === 3) {
+            createGraph(datas, 13, 22);
+          }
+          if (day === 4) {
+            createGraph(datas, 21, 30);
+          }
+          if (day === 5) {
+            createGraph(datas, 29, 38);
+          }
+          break;
+        case 18:
+          console.log("Il est 18 heures.");
+          if (day === 1) {
+            createGraph(datas, 0, 5);
+          }
+          if (day === 2) {
+            createGraph(datas, 4, 13);
+          }
+          if (day === 3) {
+            createGraph(datas, 12, 21);
+          }
+          if (day === 4) {
+            createGraph(datas, 20, 29);
+          }
+          if (day === 5) {
+            createGraph(datas, 28, 37);
+          }
+          break;
+        case 21:
+          console.log("Il est 21 heures.");
+          if (day === 1) {
+            createGraph(datas, 0, 4);
+          }
+          if (day === 2) {
+            createGraph(datas, 3, 12);
+          }
+          if (day === 3) {
+            createGraph(datas, 11, 20);
+          }
+          if (day === 4) {
+            createGraph(datas, 19, 28);
+          }
+          if (day === 5) {
+            createGraph(datas, 27, 36);
+          }
+          break;
+        default:
+          console.log("L'heure n'est pas dans la liste spécifiée.");
+      }
+    }
+    changeGraph();
+    
+    
     return datas;
   } catch (error) {
     console.error("Erreur lors de la requête API : ", error);

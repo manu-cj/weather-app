@@ -1,5 +1,6 @@
 import { getCoordoner } from "./api/coordonner.js";
 import { weatherData } from "./api/weather.js";
+import { createGraph } from "./components/createGraph.js";
 
 let inputText = document.querySelector('.text');
 let inputsubmit = document.querySelector('.send');
@@ -26,3 +27,6 @@ section_weather.classList.add('section_weather');
 main.appendChild(section_weather);
 
 weatherData('bruxelles, BE');
+
+
+

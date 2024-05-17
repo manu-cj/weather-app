@@ -15,7 +15,6 @@ main {
 main .section_weather {
   max-width: 75%;
   min-width: 320px;
-  height: 100vh;
   background-color: rgba(130, 186, 202, 0.1254901961);
   border-radius: 5px;
   display: flex;
