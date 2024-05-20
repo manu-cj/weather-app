@@ -12,7 +12,7 @@ if (storedValue) {
   console.log(`Dernière recherche: ${storedValue}`);
 } else {
     localStorage.setItem('Weather-city', 'Brussels,BE');
-    weatherData('Brussels,BE');
+    location.reload();
 }
 
 inputText.addEventListener('keyup', () => {
