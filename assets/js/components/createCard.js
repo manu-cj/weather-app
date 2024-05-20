@@ -1,11 +1,19 @@
 
 import { displayForEachHours } from "./displayEachHours.js";
 
+
 const createCard = async (datas, start, end) => {
 
+    //date au format 17/03/24 03:00
     let dateString = datas.list[start].dt_txt;
     console.log(dateString);
     const dateObject = new Date(dateString);
+    
+    let splitDateString = dateString.split(' ');
+    console.log(splitDateString);
+
+    let numberDay = splitDateString[0].split('-');
+    console.log(numberDay);
 
     // Array of day names
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -14,10 +22,12 @@ const createCard = async (datas, start, end) => {
     const dayIndex = dateObject.getDay();
     
     // Getting the day name from the index
+    // dayName est donc égal à thusday, monday, etc
     const dayName = daysOfWeek[dayIndex];
 
     const section_weather = document.querySelector('.section_weather');
-
+    section_weather.id = start;
+    let index = section_weather.id;
 
     let dates = new Date(`${datas.list[start].dt_txt}`)
         const heure = dates.getHours();
@@ -84,10 +94,11 @@ const createCard = async (datas, start, end) => {
                 break;
         }
 
-
-
+    
+    
     let datas_div = document.querySelector('.datas_div');
     let hour_div = document.createElement('div');
+    let graph_div = document.createElement('div');
     let h2_title_card = document.createElement('h2');
     let actualy_weather_div = document.createElement('div');
     let weather_and_temp_div = document.createElement('div');
@@ -102,6 +113,7 @@ const createCard = async (datas, start, end) => {
     
    
     hour_div.classList.add('hour_div');
+    graph_div.classList.add('graph_div');
     h2_title_card.classList.add('h2_title_card');
     actualy_weather_div.classList.add('actualy_weather_div');
     weather_and_temp_div.classList.add('weather_and_temp_div');
@@ -114,34 +126,43 @@ const createCard = async (datas, start, end) => {
     precipitation_div.classList.add('precipitation_div');
     visibility_div.classList.add('visibility_div');
     
-    
+    datas_div.style.backgroundPosition = 'center';
 
+    const storedValue = localStorage.getItem('Weather-city');
 
-    h2_title_card.textContent = dayName;
-    let data = datas.list[start];
+    h2_title_card.textContent = `${dayName} ${numberDay[2]}, ${storedValue}`;
+    let data = datas.list[index];
     weather_div.innerHTML = `<h3 class="actualy_weather_data">${iconWeather}</h3>`;
     temp_div.innerHTML = `<h2 class="actualy_weather_data">${Math.round(data.main.temp)} ° C</h2>`;
     
     humidity_div.innerHTML = `<h3 class="subTitle">humidity</h3>
-    <h3 class="actualy_weather_data">${data.main.humidity} %<i class="fas fa-tint" style="color:cyan;"></i></h3>`;
+    <i class="fas fa-tint" style="color:cyan;"></i>
+    <h3 class="actualy_weather_data">${data.main.humidity} %</h3>`;
     wind_div.innerHTML = `<h3 class="subTitle">wind</h3>
-    <h3 class="actualy_weather_data">${data.wind.speed} km/h  <i class="fas fa-location-arrow fa-rotate-by" style="transform: rotate(${-45+data.wind.deg}deg);""></i></h3>`;
+    <i class="fas fa-location-arrow fa-rotate-by" style="transform: rotate(${-45+data.wind.deg}deg);""></i>
+    <h3 class="actualy_weather_data">${data.wind.speed} km/h</h3>`;
     
     if (data.rain && '3h' in data.rain) {
         precipitation_div.innerHTML = `<h3 class="subTitle">precipitation</h3>
-        <h3>${data.rain['3h']} mm <i class="fas fa-umbrella"></i></h3>`;
+        <i class="fas fa-umbrella"></i>
+        <h3>${data.rain['3h']} mm</h3>`;
         visibility_div.innerHTML = `<h3 class="subTitle">visibility</h3>
-        <h3>${data.visibility} m <i class="fas fa-smog" style="color: #dedede;"></i></h3>`;
+        <i class="fas fa-smog" style="color: #dedede;"></i>
+        <h3>${data.visibility} m </h3>`;
     } else {
         precipitation_div.innerHTML = `<h3 class="subTitle">precipitation</h3>
-        <h3>0 mm <i class="fas fa-umbrella"></i></h3>`;
+        <i class="fas fa-umbrella"></i>
+        <h3>0 mm</h3>`;
         visibility_div.innerHTML = `<h3 class="subTitle">visibility</h3>
-        <h3>${data.visibility} m <i class="fas fa-smog" style="color: #f2f2f2;"></i></h3>`;
+        <i class="fas fa-smog" style="color: #f2f2f2;"></i>
+        <h3>${data.visibility} m </h3>`;
     }
 
-    
+   
+
     datas_div.appendChild(h2_title_card);
     datas_div.appendChild(hour_div);
+    datas_div.appendChild(graph_div);
     datas_div.appendChild(actualy_weather_div);
     actualy_weather_div.appendChild(weather_and_temp_div);
     weather_and_temp_div.appendChild(temp_div);
@@ -155,7 +176,23 @@ const createCard = async (datas, start, end) => {
 
 
 
+    
+    
+
+
     displayForEachHours(hour_div, dateString, datas, start, end);
+    
+    function change_hours() {
+        let divs_hours = document.querySelectorAll('.hour_data');
+    divs_hours.forEach(div_hour => {
+        div_hour.addEventListener('click', () => {
+            console.log(index);
+            section_weather.id = div_hour.id;
+            console.log(div_hour.id);
+        })
+    });
+    }
+    change_hours();
     
 }
 

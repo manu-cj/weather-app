@@ -5,18 +5,103 @@
   box-sizing: border-box;
 }
 
+header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  position: fixed;
+  z-index: 10;
+}
+@media screen and (max-width: 768px) {
+  header {
+    justify-content: center;
+    align-items: center;
+  }
+}
+header .search {
+  margin-top: 30px;
+  width: 300px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 3;
+}
+@media screen and (max-width: 768px) {
+  header .search {
+    width: 100%;
+    justify-content: center;
+  }
+}
+header .search #searchBar {
+  width: 200px;
+  height: 30px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: none;
+  margin-left: 15px;
+  padding: 5px;
+}
+header .search #sendSearch {
+  width: 50px;
+  height: 30px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-left: none;
+  cursor: pointer;
+}
+header .choice {
+  position: relative;
+  bottom: 15px;
+  padding-top: 15px;
+  margin-left: 15px;
+  width: 250px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px black solid;
+  background-color: rgb(248, 244, 244);
+  z-index: 2;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+header .choice:hover {
+  display: flex;
+}
+@media screen and (max-width: 768px) {
+  header .choice {
+    justify-content: center;
+  }
+}
+header .choice li {
+  width: 99%;
+  height: 40px;
+  list-style-type: none;
+  font-weight: bold;
+  border-bottom: 1px black solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  cursor: pointer;
+}
+header .choice li:hover {
+  background-color: aliceblue;
+}
+
 main {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: repeating-linear-gradient(90deg, hsla(298, 16%, 68%, 0.06) 0px, hsla(298, 16%, 68%, 0.06) 1px, transparent 1px, transparent 21px, hsla(298, 16%, 68%, 0.06) 21px, hsla(298, 16%, 68%, 0.06) 22px, transparent 22px, transparent 72px), repeating-linear-gradient(0deg, hsla(298, 16%, 68%, 0.06) 0px, hsla(298, 16%, 68%, 0.06) 1px, transparent 1px, transparent 21px, hsla(298, 16%, 68%, 0.06) 21px, hsla(298, 16%, 68%, 0.06) 22px, transparent 22px, transparent 72px), repeating-linear-gradient(135deg, hsla(298, 16%, 68%, 0.06) 0px, hsla(298, 16%, 68%, 0.06) 1px, transparent 1px, transparent 21px, hsla(298, 16%, 68%, 0.06) 21px, hsla(298, 16%, 68%, 0.06) 22px, transparent 22px, transparent 72px), linear-gradient(90deg, hsl(275, 3%, 97%), hsl(275, 3%, 97%));
 }
 main .section_weather {
-  max-width: 75%;
+  position: relative;
+  max-width: 70%;
   min-width: 320px;
-  height: 100vh;
-  background-color: rgba(130, 186, 202, 0.1254901961);
+  margin-top: 30px;
   border-radius: 5px;
   display: flex;
   flex-direction: row;
@@ -25,6 +110,14 @@ main .section_weather {
   flex-wrap: wrap;
   gap: 10px;
   overflow: hidden;
+  z-index: 0;
+  background-position: center;
+}
+@media screen and (max-width: 768px) {
+  main .section_weather {
+    width: 100%;
+    margin-top: 150px;
+  }
 }
 main .section_weather :where(.fa-angle-right, .fa-angle-left) {
   cursor: pointer;
@@ -55,6 +148,26 @@ main .section_weather .datas_div {
   background-blend-mode: darken;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
+@media screen and (max-width: 768px) {
+  main .section_weather .datas_div {
+    width: 80%;
+    height: -moz-max-content;
+    height: max-content;
+  }
+}
+main .section_weather .datas_div .graph_div {
+  position: relative;
+  height: 15vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(127, 255, 212, 0.351);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: none;
+  color: white;
+}
 main .section_weather .datas_div .h2_title_card {
   display: block;
   width: 100%;
@@ -74,7 +187,7 @@ main .section_weather .datas_div .day_data {
   border-radius: 5px;
 }
 main .section_weather .datas_div .hour_div {
-  height: 30%;
+  height: 35%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -84,6 +197,12 @@ main .section_weather .datas_div .hour_div {
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(1px);
+}
+@media screen and (max-width: 768px) {
+  main .section_weather .datas_div .hour_div {
+    height: -moz-max-content;
+    height: max-content;
+  }
 }
 main .section_weather .datas_div .hour_div::-webkit-scrollbar {
   width: 3px; /* Largeur de la scrollbar */
@@ -115,12 +234,29 @@ main .section_weather .datas_div .hour_div .hour_data {
   padding: 5px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
+@media screen and (max-width: 768px) {
+  main .section_weather .datas_div .hour_div .hour_data {
+    width: 100px;
+    margin: 5px;
+    min-height: 115px;
+  }
+}
 main .section_weather .datas_div .hour_div .hour_data :where(h5, h2, h3, h4) {
   padding: 0;
   margin: 5px;
 }
+@media screen and (max-width: 768px) {
+  main .section_weather .datas_div .hour_div .hour_data :where(h5, h2, h3, h4) {
+    font-size: 15px;
+  }
+}
 main .section_weather .datas_div .hour_div .hour_data img {
   width: 50px;
+}
+@media screen and (max-width: 768px) {
+  main .section_weather .datas_div .hour_div .hour_data img {
+    width: 50px;
+  }
 }
 main .section_weather .datas_div .hour_div .hour_data i {
   margin-left: 2px;
@@ -128,20 +264,23 @@ main .section_weather .datas_div .hour_div .hour_data i {
 }
 main .section_weather .datas_div .actualy_weather_div {
   width: 100%;
-  height: 66%;
+  height: 60%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   gap: 10px;
   background-color: rgba(127, 255, 212, 0.351);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-bottom-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
   color: white;
   padding: 10px;
+}
+@media screen and (max-width: 768px) {
+  main .section_weather .datas_div .actualy_weather_div {
+    height: 60%;
+  }
 }
 main .section_weather .datas_div .actualy_weather_div .subTitle {
   background-color: rgba(255, 129, 71, 0.853);
@@ -150,8 +289,17 @@ main .section_weather .datas_div .actualy_weather_div .subTitle {
   border-radius: 5px;
   text-align: center;
 }
+main .section_weather .datas_div .actualy_weather_div i {
+  font-size: 20px;
+}
+@media screen and (max-width: 768px) {
+  main .section_weather .datas_div .actualy_weather_div i {
+    font-size: small;
+    margin: 0;
+  }
+}
 main .section_weather .datas_div .actualy_weather_div .weather_and_temp_div {
-  width: 25%;
+  width: 20%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -159,9 +307,16 @@ main .section_weather .datas_div .actualy_weather_div .weather_and_temp_div {
   align-items: center;
   font-size: large;
 }
+@media screen and (max-width: 768px) {
+  main .section_weather .datas_div .actualy_weather_div .weather_and_temp_div {
+    width: 30%;
+    height: 165px;
+    font-size: x-small;
+  }
+}
 main .section_weather .datas_div .actualy_weather_div .weather_and_temp_div .temp_div {
   width: 100%;
-  height: 40%;
+  height: 45%;
   border-radius: 5px;
   background-color: rgba(203, 102, 1, 0.6980392157);
   display: flex;
@@ -174,9 +329,14 @@ main .section_weather .datas_div .actualy_weather_div .weather_and_temp_div .tem
   margin-bottom: 30px;
   margin-top: 5px;
 }
+@media screen and (max-width: 768px) {
+  main .section_weather .datas_div .actualy_weather_div .weather_and_temp_div .temp_div h3 {
+    font-size: x-small;
+  }
+}
 main .section_weather .datas_div .actualy_weather_div .weather_and_temp_div .weather_div {
   width: 100%;
-  height: 40%;
+  height: 45%;
   border-radius: 5px;
   background-color: rgba(46, 139, 196, 0.648);
   display: flex;
@@ -185,14 +345,29 @@ main .section_weather .datas_div .actualy_weather_div .weather_and_temp_div .wea
   justify-content: center;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
+@media screen and (max-width: 768px) {
+  main .section_weather .datas_div .actualy_weather_div .weather_and_temp_div .weather_div img {
+    width: 50px;
+  }
+}
 main .section_weather .datas_div .actualy_weather_div .weather_and_temp_div .weather_div h3 {
   margin-bottom: 30px;
   margin-top: 5px;
+}
+@media screen and (max-width: 768px) {
+  main .section_weather .datas_div .actualy_weather_div .weather_and_temp_div .weather_div h3 {
+    margin-bottom: 0;
+  }
 }
 main .section_weather .datas_div .actualy_weather_div .weather_and_temp_div h2 {
   margin-top: 10px;
   font-size: 35px;
   color: whitesmoke;
+}
+@media screen and (max-width: 768px) {
+  main .section_weather .datas_div .actualy_weather_div .weather_and_temp_div h2 {
+    font-size: 20px;
+  }
 }
 main .section_weather .datas_div .actualy_weather_div .weather_and_temp_div :where(h5, h3) {
   padding: 0;
@@ -202,7 +377,7 @@ main .section_weather .datas_div .actualy_weather_div .weather_and_temp_div i {
   color: rgba(93, 157, 183, 0.814);
 }
 main .section_weather .datas_div .actualy_weather_div .humidity_and_wind_div {
-  width: 30%;
+  width: 20%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -211,9 +386,15 @@ main .section_weather .datas_div .actualy_weather_div .humidity_and_wind_div {
   font-size: medium;
   padding: 0;
 }
+@media screen and (max-width: 768px) {
+  main .section_weather .datas_div .actualy_weather_div .humidity_and_wind_div {
+    width: 30%;
+    font-size: x-small;
+  }
+}
 main .section_weather .datas_div .actualy_weather_div .humidity_and_wind_div .humidity_div {
   width: 100%;
-  height: 40%;
+  height: 45%;
   border-radius: 5px;
   background-color: rgba(71, 129, 255, 0.73);
   display: flex;
@@ -225,11 +406,15 @@ main .section_weather .datas_div .actualy_weather_div .humidity_and_wind_div .hu
 main .section_weather .datas_div .actualy_weather_div .humidity_and_wind_div .humidity_div h3 {
   margin-bottom: 30px;
   margin-top: 5px;
-  margin-top: 5px;
+}
+@media screen and (max-width: 768px) {
+  main .section_weather .datas_div .actualy_weather_div .humidity_and_wind_div .humidity_div h3 {
+    margin-bottom: 15px;
+  }
 }
 main .section_weather .datas_div .actualy_weather_div .humidity_and_wind_div .wind_div {
   width: 100%;
-  height: 40%;
+  height: 45%;
   border-radius: 5px;
   background-color: rgba(5, 154, 134, 0.774);
   display: flex;
@@ -242,16 +427,20 @@ main .section_weather .datas_div .actualy_weather_div .humidity_and_wind_div .wi
   margin-bottom: 30px;
   margin-top: 5px;
 }
+@media screen and (max-width: 768px) {
+  main .section_weather .datas_div .actualy_weather_div .humidity_and_wind_div .wind_div h3 {
+    margin-bottom: 15px;
+  }
+}
 main .section_weather .datas_div .actualy_weather_div .humidity_and_wind_div :where(h5, h3) {
   padding: 0;
   margin: 0;
 }
 main .section_weather .datas_div .actualy_weather_div .humidity_and_wind_div i {
-  margin-left: 15px;
   color: tomato;
 }
 main .section_weather .datas_div .actualy_weather_div .precipitation_and_visibility {
-  width: 30%;
+  width: 20%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -260,9 +449,15 @@ main .section_weather .datas_div .actualy_weather_div .precipitation_and_visibil
   font-size: medium;
   padding: 0;
 }
+@media screen and (max-width: 768px) {
+  main .section_weather .datas_div .actualy_weather_div .precipitation_and_visibility {
+    width: 30%;
+    font-size: x-small;
+  }
+}
 main .section_weather .datas_div .actualy_weather_div .precipitation_and_visibility .precipitation_div {
   width: 100%;
-  height: 40%;
+  height: 45%;
   border-radius: 5px;
   background-color: rgba(0, 166, 208, 0.733);
   display: flex;
@@ -276,9 +471,14 @@ main .section_weather .datas_div .actualy_weather_div .precipitation_and_visibil
   margin-top: 5px;
   margin-top: 5px;
 }
+@media screen and (max-width: 768px) {
+  main .section_weather .datas_div .actualy_weather_div .precipitation_and_visibility .precipitation_div h3 {
+    margin-bottom: 15px;
+  }
+}
 main .section_weather .datas_div .actualy_weather_div .precipitation_and_visibility .visibility_div {
   width: 100%;
-  height: 40%;
+  height: 45%;
   border-radius: 5px;
   background-color: rgba(175, 175, 1, 0.611);
   display: flex;
@@ -292,16 +492,21 @@ main .section_weather .datas_div .actualy_weather_div .precipitation_and_visibil
   margin-top: 5px;
   margin-top: 5px;
 }
+@media screen and (max-width: 768px) {
+  main .section_weather .datas_div .actualy_weather_div .precipitation_and_visibility .visibility_div h3 {
+    margin-bottom: 15px;
+  }
+}
 main .section_weather .datas_div .actualy_weather_div .precipitation_and_visibility :where(h5, h3) {
   padding: 0;
   margin: 0;
 }
 main .section_weather .datas_div .actualy_weather_div .precipitation_and_visibility i {
-  margin-left: 15px;
   color: orange;
 }
 main .section_weather .slider_card_select {
   width: 80%;
+  height: 40px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -309,4 +514,9 @@ main .section_weather .slider_card_select {
 }
 main .section_weather .slider_card_select i {
   background-color: white;
+  cursor: pointer;
+}
+
+body {
+  background-image: repeating-linear-gradient(90deg, hsla(298, 16%, 68%, 0.06) 0px, hsla(298, 16%, 68%, 0.06) 1px, transparent 1px, transparent 21px, hsla(298, 16%, 68%, 0.06) 21px, hsla(298, 16%, 68%, 0.06) 22px, transparent 22px, transparent 72px), repeating-linear-gradient(0deg, hsla(298, 16%, 68%, 0.06) 0px, hsla(298, 16%, 68%, 0.06) 1px, transparent 1px, transparent 21px, hsla(298, 16%, 68%, 0.06) 21px, hsla(298, 16%, 68%, 0.06) 22px, transparent 22px, transparent 72px), repeating-linear-gradient(135deg, hsla(298, 16%, 68%, 0.06) 0px, hsla(298, 16%, 68%, 0.06) 1px, transparent 1px, transparent 21px, hsla(298, 16%, 68%, 0.06) 21px, hsla(298, 16%, 68%, 0.06) 22px, transparent 22px, transparent 72px), linear-gradient(90deg, hsl(275, 3%, 97%), hsl(275, 3%, 97%));
 }/*# sourceMappingURL=style.css.map */

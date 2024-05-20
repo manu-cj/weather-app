@@ -1,8 +1,8 @@
 .section_weather {
-    max-width: 75%;
+    position: relative;
+    max-width: 70%;
     min-width: 320px;
-    height: 100vh;
-    background-color: #82baca20;
+    margin-top: 30px;
     border-radius: 5px;
     display: flex;
     flex-direction: row;
@@ -11,6 +11,13 @@
     flex-wrap: wrap;
     gap: 10px;
     overflow: hidden;
+    z-index: 0;
+    background-position: center;
+    
+    @include mobile {
+        width: 100%;
+        margin-top: 150px;
+    }
     
     :where(.fa-angle-right, .fa-angle-left) {
         cursor: pointer;
@@ -43,6 +50,24 @@
         border-radius: 5px;
         background-blend-mode: darken;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        @include mobile {
+            width: 80%;
+            height: max-content;
+        }
+
+        .graph_div {
+            position: relative;
+            height: 15vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(127, 255, 212, 0.351);
+            backdrop-filter: blur( 5px );
+            -webkit-backdrop-filter: blur( 5px );
+            border: none;
+            color: white;
+        }
 
         .h2_title_card {
             display: block;
@@ -65,7 +90,7 @@
         }
 
         .hour_div {
-            height: 30%;
+            height: 35%;
             display: flex;
             flex-direction: row;
             justify-content: space-around;
@@ -76,6 +101,10 @@
             box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
             backdrop-filter: blur( 4px );
             -webkit-backdrop-filter: blur( 1px );
+
+            @include mobile {
+                height: max-content;
+            }
 
             &::-webkit-scrollbar {
                 width: 3px; /* Largeur de la scrollbar */
@@ -112,13 +141,26 @@
                 padding: 5px;
                 box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 
+                @include mobile {
+                    width: 100px;
+                    margin: 5px;
+                    min-height: 115px;
+                }
+
                 :where(h5, h2, h3, h4) {
                     padding: 0;
                     margin: 5px;
+
+                    @include mobile {
+                        font-size: 15px;
+                    }
                 }
 
                 img {
                     width: 50px;
+                    @include mobile {
+                        width: 50px;
+                    }
                 }
 
                 i {
@@ -127,23 +169,28 @@
                 }
             }
         }
+        
 
         .actualy_weather_div {
             width: 100%;
-            height: 66%;
+            height: 60%;
             display: flex;
             flex-direction: row;
             justify-content: space-around;
             gap: 10px;
             background-color: rgba(127, 255, 212, 0.351);
-            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            
             backdrop-filter: blur( 4px );
             -webkit-backdrop-filter: blur( 4px );
             border-bottom-left-radius: 5px;
             border-bottom-left-radius: 5px;
-            border: 1px solid rgba( 255, 255, 255, 0.18 );
+            
             color: white;
             padding: 10px;
+
+            @include mobile {
+                height: 60%;
+            }
 
 
             .subTitle {
@@ -154,17 +201,31 @@
                 text-align: center;
             }
 
+            i {
+                font-size: 20px;
+                @include mobile {
+                    font-size: small;
+                    margin: 0;
+                }
+            }
+
             .weather_and_temp_div {
-                width: 25%;
+                width: 20%;
                 height: 100%;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-around;
                 align-items: center;
                 font-size: large;
+
+                @include mobile {
+                    width: 30%;
+                    height: 165px;
+                    font-size: x-small;
+                }
                 .temp_div {
                     width: 100%;
-                    height: 40%;
+                    height: 45%;
                     border-radius: 5px;
                     background-color: #cb6601b2;
                     display: flex;
@@ -175,12 +236,16 @@
                     h3 {
                         margin-bottom: 30px;
                         margin-top: 5px;
+
+                        @include mobile {
+                            font-size: x-small;
+                        }
                     }
                 }
 
                 .weather_div {
                     width: 100%;
-                    height: 40%;
+                    height: 45%;
                     border-radius: 5px;
                     background-color: rgba(46, 139, 196, 0.648);
                     display: flex;
@@ -188,9 +253,20 @@
                     align-items: center;
                     justify-content: center;
                     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+                    @include mobile {
+                        img {
+                            width: 50px;
+                        }
+                    }
+
                     h3 {
                         margin-bottom: 30px;
                         margin-top: 5px;
+
+                        @include mobile {
+                            margin-bottom: 0;
+                        }
                     }
                 }
 
@@ -198,6 +274,10 @@
                     margin-top: 10px;
                     font-size: 35px;
                     color: whitesmoke;
+
+                    @include mobile {
+                        font-size: 20px;
+                    }
                 }
 
                 :where(h5, h3) {
@@ -211,7 +291,7 @@
             }
 
             .humidity_and_wind_div {
-                width: 30%;
+                width: 20%;
                 height: 100%;
                 display: flex;
                 flex-direction: column;
@@ -219,9 +299,14 @@
                 align-items: center;
                 font-size: medium;
                 padding: 0;
+                @include mobile {
+                    width: 30%;
+                    font-size: x-small;
+                }
+                
                 .humidity_div {
                     width: 100%;
-                    height: 40%;
+                    height: 45%;
                     border-radius: 5px;
                     background-color: rgba(71, 129, 255, 0.73);
                     display: flex;
@@ -232,12 +317,14 @@
                     h3 {
                         margin-bottom: 30px;
                         margin-top: 5px;
-                        margin-top: 5px;
+                        @include mobile {
+                            margin-bottom: 15px;
+                        }
                     }
                 }
                 .wind_div {
                     width: 100%;
-                    height: 40%;
+                    height: 45%;
                     border-radius: 5px;
                     background-color: rgba(5, 154, 134, 0.774);
                     display: flex;
@@ -248,6 +335,9 @@
                     h3 {
                         margin-bottom: 30px;
                         margin-top: 5px;
+                        @include mobile {
+                            margin-bottom: 15px;
+                        }
                     }
                 }
 
@@ -257,13 +347,12 @@
                 }
 
                 i {
-                    margin-left: 15px;
                     color: tomato;
                 }
             }
 
             .precipitation_and_visibility {
-                width: 30%;
+                width: 20%;
                 height: 100%;
                 display: flex;
                 flex-direction: column;
@@ -271,10 +360,14 @@
                 align-items: center;
                 font-size: medium;
                 padding: 0;
+                @include mobile {
+                    width: 30%;
+                    font-size: x-small;
+                }
 
                 .precipitation_div {
                     width: 100%;
-                    height: 40%;
+                    height: 45%;
                     border-radius: 5px;
                     background-color: rgba(0, 166, 208, 0.733);
                     display: flex;
@@ -286,11 +379,14 @@
                         margin-bottom: 30px;
                         margin-top: 5px;
                         margin-top: 5px;
+                        @include mobile {
+                            margin-bottom: 15px;
+                        }
                     }
                 }
                 .visibility_div {
                     width: 100%;
-                    height: 40%;
+                    height: 45%;
                     border-radius: 5px;
                     background-color: rgba(175, 175, 1, 0.611);
                     display: flex;
@@ -302,6 +398,9 @@
                         margin-bottom: 30px;
                         margin-top: 5px;
                         margin-top: 5px;
+                        @include mobile {
+                            margin-bottom: 15px;
+                        }
                     }
                 }
 
@@ -311,7 +410,6 @@
                 }
 
                 i {
-                    margin-left: 15px;
                     color: orange;
                 }
             }
@@ -320,6 +418,7 @@
 
     .slider_card_select {
         width: 80%;
+        height: 40px;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
@@ -327,6 +426,7 @@
 
         i {
             background-color: white;
+            cursor: pointer;
         }
     }
 }
