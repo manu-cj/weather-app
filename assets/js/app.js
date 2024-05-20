@@ -9,10 +9,10 @@ let choiceDiv = document.querySelector('.choice');
 
 const storedValue = localStorage.getItem('Weather-city');
 if (storedValue) {
-  
   console.log(`Dernière recherche: ${storedValue}`);
 } else {
     localStorage.setItem('Weather-city', 'Brussels,BE');
+    weatherData('Brussels,BE');
 }
 
 inputText.addEventListener('keyup', () => {
