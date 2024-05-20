@@ -92,6 +92,7 @@ const createCard = async (datas, start, end) => {
     
     let datas_div = document.querySelector('.datas_div');
     let hour_div = document.createElement('div');
+    let graph_div = document.createElement('div');
     let h2_title_card = document.createElement('h2');
     let actualy_weather_div = document.createElement('div');
     let weather_and_temp_div = document.createElement('div');
@@ -106,6 +107,7 @@ const createCard = async (datas, start, end) => {
     
    
     hour_div.classList.add('hour_div');
+    graph_div.classList.add('graph_div');
     h2_title_card.classList.add('h2_title_card');
     actualy_weather_div.classList.add('actualy_weather_div');
     weather_and_temp_div.classList.add('weather_and_temp_div');
@@ -127,26 +129,33 @@ const createCard = async (datas, start, end) => {
     temp_div.innerHTML = `<h2 class="actualy_weather_data">${Math.round(data.main.temp)} ° C</h2>`;
     
     humidity_div.innerHTML = `<h3 class="subTitle">humidity</h3>
-    <h3 class="actualy_weather_data">${data.main.humidity} %<i class="fas fa-tint" style="color:cyan;"></i></h3>`;
+    <i class="fas fa-tint" style="color:cyan;"></i>
+    <h3 class="actualy_weather_data">${data.main.humidity} %</h3>`;
     wind_div.innerHTML = `<h3 class="subTitle">wind</h3>
-    <h3 class="actualy_weather_data">${data.wind.speed} km/h  <i class="fas fa-location-arrow fa-rotate-by" style="transform: rotate(${-45+data.wind.deg}deg);""></i></h3>`;
+    <i class="fas fa-location-arrow fa-rotate-by" style="transform: rotate(${-45+data.wind.deg}deg);""></i>
+    <h3 class="actualy_weather_data">${data.wind.speed} km/h</h3>`;
     
     if (data.rain && '3h' in data.rain) {
         precipitation_div.innerHTML = `<h3 class="subTitle">precipitation</h3>
-        <h3>${data.rain['3h']} mm <i class="fas fa-umbrella"></i></h3>`;
+        <i class="fas fa-umbrella"></i>
+        <h3>${data.rain['3h']} mm</h3>`;
         visibility_div.innerHTML = `<h3 class="subTitle">visibility</h3>
-        <h3>${data.visibility} m <i class="fas fa-smog" style="color: #dedede;"></i></h3>`;
+        <i class="fas fa-smog" style="color: #dedede;"></i>
+        <h3>${data.visibility} m </h3>`;
     } else {
         precipitation_div.innerHTML = `<h3 class="subTitle">precipitation</h3>
-        <h3>0 mm <i class="fas fa-umbrella"></i></h3>`;
+        <i class="fas fa-umbrella"></i>
+        <h3>0 mm</h3>`;
         visibility_div.innerHTML = `<h3 class="subTitle">visibility</h3>
-        <h3>${data.visibility} m <i class="fas fa-smog" style="color: #f2f2f2;"></i></h3>`;
+        <i class="fas fa-smog" style="color: #f2f2f2;"></i>
+        <h3>${data.visibility} m </h3>`;
     }
 
    
 
     datas_div.appendChild(h2_title_card);
     datas_div.appendChild(hour_div);
+    datas_div.appendChild(graph_div);
     datas_div.appendChild(actualy_weather_div);
     actualy_weather_div.appendChild(weather_and_temp_div);
     weather_and_temp_div.appendChild(temp_div);
