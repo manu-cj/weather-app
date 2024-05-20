@@ -6,7 +6,8 @@ let getCoordoner = async (city) => {
         if (!response.ok) {
             throw new Error('Erreur HTTP : ' + response.status);
         }
-        const datas = await response.json();
+        const datas = await response.json(); 
+        
         console.log(datas);
         let inputText = document.querySelector('.text');
         inputText.placeholder = `${datas[0].name},${datas[0].country}`;
