@@ -25,11 +25,7 @@ inputText.addEventListener('keyup', () => {
 })
 
 
-window.addEventListener("click", (e) => {
-    if (e.target !== inputText || e.target !== choiceDiv) {
-      choiceDiv.style.display = "none";
-    }
-  });
+
 
 inputsubmit.addEventListener('click', () => {
     if (inputText.value.length > 0) {
@@ -44,7 +40,11 @@ inputsubmit.addEventListener('click', () => {
     }
 })
 
-
+window.addEventListener("click", (e) => {
+    if (e.target !== inputText || e.target !== choiceDiv) {
+      choiceDiv.style.display = "none";
+    }
+  });
 
 let section_weather = document.createElement('section');
 section_weather.classList.add('section_weather');
