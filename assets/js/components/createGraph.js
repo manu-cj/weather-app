@@ -21,14 +21,16 @@ const createGraph = (datas, start, end) => {
     console.log(temps);
 
     new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
           labels: hours,
           datasets: [{
             label: '°C',
+            borderColor: 'tomato',
             data: temps,
             borderWidth: 1,
             borderRadius: 5,
+            color: 'white',
             backgroundColor: ['lightsalmon', 'cyan', 'teal', 'yellow'],
           }]
         },

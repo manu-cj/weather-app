@@ -1,8 +1,8 @@
-
+import { weatherData } from "./weather.js";
 
 let getCoordoner = async (city) => {
     try {
-        const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=12e14c46b7b7aec01efc9c6d10f8e568`);
+        const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=2&appid=12e14c46b7b7aec01efc9c6d10f8e568`);
         if (!response.ok) {
             throw new Error('Erreur HTTP : ' + response.status);
         }
@@ -20,9 +20,11 @@ let getCoordoner = async (city) => {
         choiceDiv.appendChild(createLi);
 
         createLi.addEventListener('click', () => {
-            console.log(createLi.textContent);
             inputText.value = createLi.textContent;
-            console.log(inputText.textContent);
+            localStorage.setItem('Weather-city', createLi.textContent);
+            const section_weather = document.querySelector('.section_weather');
+            section_weather.innerHTML = "";
+            weatherData(createLi.textContent);
         })
         });
 

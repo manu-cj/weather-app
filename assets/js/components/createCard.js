@@ -8,6 +8,12 @@ const createCard = async (datas, start, end) => {
     let dateString = datas.list[start].dt_txt;
     console.log(dateString);
     const dateObject = new Date(dateString);
+    
+    let splitDateString = dateString.split(' ');
+    console.log(splitDateString);
+
+    let numberDay = splitDateString[0].split('-');
+    console.log(numberDay);
 
     // Array of day names
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -120,10 +126,11 @@ const createCard = async (datas, start, end) => {
     precipitation_div.classList.add('precipitation_div');
     visibility_div.classList.add('visibility_div');
     
-    
+    datas_div.style.backgroundPosition = 'center';
 
+    const storedValue = localStorage.getItem('Weather-city');
 
-    h2_title_card.textContent = dayName;
+    h2_title_card.textContent = `${dayName} ${numberDay[2]}, ${storedValue}`;
     let data = datas.list[index];
     weather_div.innerHTML = `<h3 class="actualy_weather_data">${iconWeather}</h3>`;
     temp_div.innerHTML = `<h2 class="actualy_weather_data">${Math.round(data.main.temp)} ° C</h2>`;
