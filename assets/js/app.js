@@ -16,7 +16,7 @@ if (storedValue) {
 }
 
 inputText.addEventListener('keyup', () => {
-    getCoordoner(inputText.value);
+    getCoordoner(inputText.textContent);
     choiceDiv.style.display = 'flex';
    
     if (inputText.value.length < 3) {
