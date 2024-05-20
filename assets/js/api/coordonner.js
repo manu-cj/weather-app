@@ -2,7 +2,7 @@ import { weatherData } from "./weather.js";
 
 let getCoordoner = async (city) => {
     try {
-        const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=2&appid=12e14c46b7b7aec01efc9c6d10f8e568`);
+        const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=2&appid=12e14c46b7b7aec01efc9c6d10f8e568`);
         if (!response.ok) {
             throw new Error('Erreur HTTP : ' + response.status);
         }
