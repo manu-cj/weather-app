@@ -15,5 +15,6 @@
 
 - **HTML5** : Pour la structure de la page web.
 - **CSS3** : Pour le style et la mise en forme.
+- **Sass** : Pour une gestion plus avancée des styles CSS et une meilleure organisation.
 - **JavaScript** : Pour la logique de l'application et l'interaction avec l'API.
 - **API météo** : Pour obtenir les données météorologiques (comme OpenWeatherMap, WeatherAPI, etc.).
