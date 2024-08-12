@@ -18,3 +18,5 @@
 - **Sass** : Pour une gestion plus avancée des styles CSS et une meilleure organisation.
 - **JavaScript** : Pour la logique de l'application et l'interaction avec l'API.
 - **API météo** : Pour obtenir les données météorologiques (comme OpenWeatherMap, WeatherAPI, etc.).
+
+![application](./assets/gif/Enregistrement2024-05-16193525-ezgif.com-video-to-gif-converter.gif)
